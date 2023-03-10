@@ -1,0 +1,115 @@
+/* Start add-car */
+.add-car {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--main-color);
+}
+.add-car form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  margin: 128px auto 64px;
+  font-size: 24px;
+  color: white;
+  background-color: var(--main-color);
+  background-image: linear-gradient(to left, #434343 0%, var(--main-color) 100%);
+}
+.add-car form section {
+  width: 100%;
+  text-align: center;
+  padding: 24px;
+  border: 1px dashed var(--secondary-color);
+  border-radius: 16px;
+  font-size: 16px;
+}
+.add-car form .thumbnails {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.add-car form .thumbnails .thumbnail {
+  position: relative;
+}
+.add-car form .thumbnails .thumbnail button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  border-radius: 4px;
+  padding: 2px;
+  z-index: 111;
+  background-color: var(--blue-color);
+}
+.add-car form .thumbnails .thumbnail button svg {
+  transition: .3s;
+}
+.add-car form .thumbnails .thumbnail button:hover svg {
+  color: var(--red-color);
+  transform: scale(1.2);
+}
+.add-car form > input {
+  width: 100%;
+}
+.add-car form .form-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+}
+.add-car form .form-inputs > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: calc(50% - 12px);
+}
+@media (max-width: 767px) {
+  .add-car form .form-inputs > div {
+    width: 100%;
+  }
+}
+.add-car form select,
+.add-car form input,
+.add-car form textarea {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  caret-color: var(--blue-color);
+}
+.add-car form textarea {
+  width: 100%;
+}
+.add-car form select:focus,
+.add-car form textarea:focus,
+.add-car form input:focus {
+  outline: none;
+}
+.add-car form textarea {
+  height: 200px;
+}
+.add-car form .validation {
+  color: var(--red-color);
+}
+.add-car form button[type="submit"] {
+  width: fit-content;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  background-color: var(--dark-blue);
+  border-radius: 8px;
+  border: none;
+}
+/* End add-car */
