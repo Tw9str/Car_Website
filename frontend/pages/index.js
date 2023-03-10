@@ -18,7 +18,7 @@ const Home = ({ cars }) => {
 
 export const getServerSideProps = async () => {
   try {
-    const res = await fetch("http://localhost:3001/api/cars");
+    const res = await fetch("https://car-website-api.vercel.app/api/cars");
     const cars = await res.json();
     return { props: { cars } };
   } catch (error) {
