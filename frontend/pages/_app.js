@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/carDetails.css";
 import "@/styles/auth.css";
 import "@/styles/add.css";
 

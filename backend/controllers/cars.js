@@ -15,14 +15,17 @@ const getCars = async (req, res) => {
 };
 
 const getCar = async (req, res) => {
-  Car.findById({}, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Error retrieving data from database");
-    } else {
-      res.status(200).send(data);
+  const { slug } = req.params;
+  try {
+    const car = await Car.findOne({ slug });
+    if (!car) {
+      return res.status(404).send({ message: "Car not found" });
     }
-  });
+    res.json(car);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Server error" });
+  }
 };
 
 const addCar = async (req, res) => {
@@ -75,4 +78,4 @@ const deleteCar = async (req, res) => {
   }
 };
 
-module.exports = { getCars, addCar, deleteCar };
+module.exports = { getCars, getCar, addCar, deleteCar };

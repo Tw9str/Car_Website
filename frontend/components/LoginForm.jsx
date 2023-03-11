@@ -30,7 +30,7 @@ function LoginForm() {
       password
     };
 
-    fetch('https://car-website-api.vercel.app/api/auth/login', {
+    fetch('http://localhost:3001/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

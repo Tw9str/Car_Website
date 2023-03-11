@@ -9,11 +9,9 @@ import { useSelector } from 'react-redux';
 import Link from "next/link";
 
 
-export default function Car({onCarRemove, id, make, model, year, km, fuel, price, transmission, description, imagesPath}) {
+export default function Car({onCarRemove, id, make, model, year, km, fuel, price, transmission, description, imagesPath, slug}) {
 
   const token = useSelector(state => state.token);
-
-  const slug = `/occasions/${make.toLowerCase().replace(/\s+/g, '-')}-${model.toLowerCase().replace(/\s+/g, '-')}`;
 
 
   const options = {
@@ -30,7 +28,7 @@ export default function Car({onCarRemove, id, make, model, year, km, fuel, price
   const formatter = new Intl.NumberFormat('nl-NL', kmOptions);
 
   return (
-    <Link key={id} className="car" href={slug}>
+    <Link key={id} className="car" href={`/occasions/${slug}`}>
       <div className="img-frame">
         <Image src={`/assets/${imagesPath[0]}`} alt={`${make} ${model}`} fill />
         {token && <div className="car-manage">

@@ -38,9 +38,23 @@ const carSchema = new mongoose.Schema(
       type: [String],
       validate: (v) => Array.isArray(v) && v.length > 0,
     },
+    slug: {
+      type: String,
+      unique: true,
+    },
   },
   { timestamps: true }
 );
+
+carSchema.pre("save", function (next) {
+  this.slug = generateSlug(this.make, this.model);
+  next();
+});
+
+function generateSlug(make, model) {
+  const slug = `${make} ${model}`.toLowerCase().replace(/\s+/g, "-");
+  return slug;
+}
 
 const Car = mongoose.model("Car", carSchema);
 

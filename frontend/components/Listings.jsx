@@ -29,8 +29,8 @@ const Listings = ({ cars }) => {
       <div className="container">
         <h1 className="heading">Occasions</h1>
         <div className="cars">
-          {carList.length > 0 && carList.map(({ _id, make, model, year, km, fuel, price, transmission, description, imagesPath }) => 
-          <Car key={_id} onCarRemove={handleCarRemove} id={_id} make={make} model={model} year={year} km={km} fuel={fuel} price={price} transmission={transmission} description={description} imagesPath={imagesPath} />)}
+          {carList.length > 0 && carList.map(({ _id, make, model, year, km, fuel, price, transmission, description, imagesPath, slug }) => 
+          <Car key={_id} onCarRemove={handleCarRemove} id={_id} make={make} model={model} year={year} km={km} fuel={fuel} price={price} transmission={transmission} description={description} imagesPath={imagesPath} slug={slug} />)}
           {token && <Link className="plus-icon" href="/add"><AiOutlinePlusSquare/></Link>}
         </div>
         <div className="social">

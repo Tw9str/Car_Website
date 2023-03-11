@@ -8,7 +8,7 @@ const verifyToken = require("./middleware/auth");
 const { addCar } = require("./controllers/cars");
 const authRoutes = require("./routes/auth");
 const carRoutes = require("./routes/cars");
-const addCarRoutes = require("./routes/addCar");
+const deleteCarRoutes = require("./routes/deleteCar");
 require("dotenv").config();
 
 const app = express();
@@ -43,7 +43,7 @@ app.post("/api/car/add", verifyToken, upload.array("images"), addCar);
 /* Routes */
 app.use("/api/auth", authRoutes);
 app.use("/api/cars", carRoutes);
-app.use("/api/car", verifyToken, addCarRoutes);
+app.use("/api/car", verifyToken, deleteCarRoutes);
 
 /* Server */
 const PORT = process.env.PORT || 5000;

@@ -6,7 +6,7 @@ export default function Categories() {
     <div className="categories">
       <div className="container">
         <div className="car-shop">
-          <Image src="/assets/1678109174808-1header.jpg" alt="Car Shop" fill />
+          <Image src="/assets/car2.jpg" alt="Car Shop" fill />
           <div className="shop-info">
             <div className="desc">
               <h2>Lorem ipsum dolor</h2>
