@@ -12,7 +12,7 @@ const Listings = ({ cars }) => {
   const token = useSelector(state => state.token);
 
   function handleCarRemove(id) {
-    fetch(`http://localhost:3001/api/car/delete/${id}`, {
+    fetch(`https://car-website-api.vercel.app/api/car/delete/${id}`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${token}`

@@ -8,7 +8,11 @@ function RegisterForm() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     const response = await fetch('https://car-website-api.vercel.app/auth/register', {
+=======
+    const response = await fetch('https://car-website-api.vercel.app/api/auth/register', {
+>>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

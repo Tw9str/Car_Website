@@ -9,9 +9,12 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { GiRoad, GiMoneyStack } from "react-icons/gi";
 import { FiPhoneCall } from "react-icons/fi"
 import { useSelector } from 'react-redux';
+<<<<<<< HEAD
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+=======
+>>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
 import Loader from "./Loader";
 
 export default function CarDetails({car: {make, model, year, km, fuel, price, transmission, description, imagesPath}}) {
@@ -75,6 +78,7 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
         <div className="car-info-cols">
           <div className="left-col">
             <div className="current-img">
+<<<<<<< HEAD
               <div className="imgs-count">
               {selectedImage + 1}/{imagesPath.length}
               </div>
@@ -84,14 +88,29 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
               <Slider {...settings} afterChange={handleAfterChange}>
               {isLoading && <Loader/>}
               {imagesPath && imagesPath.map((src, index) =><div key={index} className="img-frame slide">{!hasError && ( <Image src={`/assets/${src}`} alt={`${make} ${model}`}
+=======
+              {imagesPath.map((src, index) => <Image key={index} src={`/assets/${src}`} alt={`${make} ${model}`} fill className={index === selectedImage ? "selected" : ""} priority /> )}
+            </div>
+            <div className="car-imgs">
+              {isLoading && <Loader/>}
+              {imagesPath && imagesPath.map((src, index) =><div key={index} className="img-frame">{!hasError && ( <Image src={`/assets/${src}`} alt={`${make} ${model}`}
+>>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
                 width={200} 
                 height={125} 
                 priority
                 onLoad={handleLoad}
                 onError={handleError}
+<<<<<<< HEAD
                 onClick={() => setSelectedImage(index)}
               />)}</div>)}
               </Slider>
+=======
+                onMouseEnter={() => {
+                  console.log(selectedImage);
+                  setSelectedImage(index);
+                }}
+              />)}</div>)}
+>>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
               {hasError && <p>Error loading image</p>}
             </div>
           </div>
