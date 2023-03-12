@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 import "@/styles/carDetails.css";
 import "@/styles/auth.css";
 import "@/styles/add.css";
+import "@/styles/loader.css";
+import "@/styles/slider.css";
 
 import authReducer from "../state";
 import { configureStore } from "@reduxjs/toolkit";

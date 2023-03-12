@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Social from "./Social";
 import Image from "next/image";
 import Map from "./Map";
@@ -9,10 +9,26 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { GiRoad, GiMoneyStack } from "react-icons/gi";
 import { FiPhoneCall } from "react-icons/fi"
 import { useSelector } from 'react-redux';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Loader from "./Loader";
 
 export default function CarDetails({car: {make, model, year, km, fuel, price, transmission, description, imagesPath}}) {
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
   const token = useSelector(state => state.token);
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
 
   const options = {
     style: 'currency',
@@ -27,6 +43,27 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
 
   const formatter = new Intl.NumberFormat('nl-NL', kmOptions);
 
+  const settings = {
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
+
+  const handleAfterChange = (current) => {
+    setSelectedImage(current);
+  };
+
+
   return (
     <div className="car-page">
       <div className="container">
@@ -38,10 +75,24 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
         <div className="car-info-cols">
           <div className="left-col">
             <div className="current-img">
-              <img src="/assets/car.jpg" alt={`${make} ${model}`} />
+              <div className="imgs-count">
+              {selectedImage + 1}/{imagesPath.length}
+              </div>
+              {imagesPath.map((src, index) => <Image key={index} src={`/assets/${src}`} alt={`${make} ${model}`} fill className={index === selectedImage ? "selected" : ""} priority /> )}
             </div>
             <div className="car-imgs">
-              {imagesPath && imagesPath.map((img, index) =><div key={index} className="img-frame"><img src={`/assets/${img}`} alt={`${make} ${model}`} /></div>)}
+              <Slider {...settings} afterChange={handleAfterChange}>
+              {isLoading && <Loader/>}
+              {imagesPath && imagesPath.map((src, index) =><div key={index} className="img-frame slide">{!hasError && ( <Image src={`/assets/${src}`} alt={`${make} ${model}`}
+                width={200} 
+                height={125} 
+                priority
+                onLoad={handleLoad}
+                onError={handleError}
+                onClick={() => setSelectedImage(index)}
+              />)}</div>)}
+              </Slider>
+              {hasError && <p>Error loading image</p>}
             </div>
           </div>
           <aside className="right-col">
@@ -67,7 +118,9 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
         <div className="description">
           <h1>{make}</h1>
           <h2>{model}</h2>
-          <p>{description}</p>
+          <p>
+            {description}
+          </p>
         </div>
         <script type="application/ld+json">
           {`
