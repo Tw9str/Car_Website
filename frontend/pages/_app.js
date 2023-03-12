@@ -3,10 +3,7 @@ import "@/styles/carDetails.css";
 import "@/styles/auth.css";
 import "@/styles/add.css";
 import "@/styles/loader.css";
-<<<<<<< HEAD
 import "@/styles/slider.css";
-=======
->>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
 
 import authReducer from "../state";
 import { configureStore } from "@reduxjs/toolkit";

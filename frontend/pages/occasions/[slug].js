@@ -22,11 +22,7 @@ export default function CarDetailsPage({ car, error }) {
 export const getServerSideProps = async (context) => {
   const { slug } = context.params;
   try {
-<<<<<<< HEAD
-    const res = await fetch(`https://car-website-api.vercel.app/cars/car/${slug}`);
-=======
     const res = await fetch(`https://car-website-api.vercel.app/api/cars/car/${slug}`);
->>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
     if (!res.ok) {
       throw new Error("Failed to fetch car details");
     }

@@ -51,7 +51,6 @@
 .car-page .container .car-info-cols .left-col .current-img img.selected {
   z-index: 999;
   opacity: 1;
-<<<<<<< HEAD
 }
 .car-page .container .car-info-cols .left-col .current-img .imgs-count {
   position: absolute;
@@ -64,8 +63,6 @@
   z-index: 1000;
   color: var(--text-color);
   background-color: var(--main-color);
-=======
->>>>>>> 87253c33842df2f6e80e0ff06d6c182ce173227f
 }
 .car-page .container .car-imgs {
 }
