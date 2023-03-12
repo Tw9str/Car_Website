@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Social from "./Social";
 import Image from "next/image";
 import Map from "./Map";
@@ -9,10 +9,23 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { GiRoad, GiMoneyStack } from "react-icons/gi";
 import { FiPhoneCall } from "react-icons/fi"
 import { useSelector } from 'react-redux';
+import Loader from "./Loader";
 
 export default function CarDetails({car: {make, model, year, km, fuel, price, transmission, description, imagesPath}}) {
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
   const token = useSelector(state => state.token);
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
 
   const options = {
     style: 'currency',
@@ -38,10 +51,22 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
         <div className="car-info-cols">
           <div className="left-col">
             <div className="current-img">
-              <img src="/assets/car.jpg" alt={`${make} ${model}`} />
+              {imagesPath.map((src, index) => <Image key={index} src={`/assets/${src}`} alt={`${make} ${model}`} fill className={index === selectedImage ? "selected" : ""} priority /> )}
             </div>
             <div className="car-imgs">
-              {imagesPath && imagesPath.map((img, index) =><div key={index} className="img-frame"><img src={`/assets/${img}`} alt={`${make} ${model}`} /></div>)}
+              {isLoading && <Loader/>}
+              {imagesPath && imagesPath.map((src, index) =><div key={index} className="img-frame">{!hasError && ( <Image src={`/assets/${src}`} alt={`${make} ${model}`}
+                width={200} 
+                height={125} 
+                priority
+                onLoad={handleLoad}
+                onError={handleError}
+                onMouseEnter={() => {
+                  console.log(selectedImage);
+                  setSelectedImage(index);
+                }}
+              />)}</div>)}
+              {hasError && <p>Error loading image</p>}
             </div>
           </div>
           <aside className="right-col">
@@ -67,7 +92,9 @@ export default function CarDetails({car: {make, model, year, km, fuel, price, tr
         <div className="description">
           <h1>{make}</h1>
           <h2>{model}</h2>
-          <p>{description}</p>
+          <p>
+            {description}
+          </p>
         </div>
         <script type="application/ld+json">
           {`

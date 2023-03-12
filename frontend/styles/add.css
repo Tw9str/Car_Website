@@ -88,9 +88,6 @@
   border: none;
   caret-color: var(--blue-color);
 }
-.add-car form textarea {
-  width: 100%;
-}
 .add-car form select:focus,
 .add-car form textarea:focus,
 .add-car form input:focus {
@@ -98,6 +95,8 @@
 }
 .add-car form textarea {
   height: 200px;
+  width: 100%;
+  white-space: pre-wrap;
 }
 .add-car form .validation {
   color: var(--red-color);
