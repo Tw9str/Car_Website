@@ -640,6 +640,9 @@ button {
 .about .map {
   width: 100%;
 }
+.about .map iframe {
+  width: 100%;
+}
 /* End About Us */
 /* Start Contact */
 .contact {
@@ -656,6 +659,9 @@ button {
   color: var(--text-color);
 }
 .contact .map {
+  width: 100%;
+}
+.contact .map iframe {
   width: 100%;
 }
 /* Start Contact */

@@ -48,7 +48,7 @@ function AddCar() {
       formData.append("images", file);
     });
 
-    const response = await fetch('http://localhost:3001/api/car/add', {
+    const response = await fetch('https://car-website-api.vercel.app/api/car/add', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`
