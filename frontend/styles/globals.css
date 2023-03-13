@@ -637,6 +637,9 @@ button {
   gap: 64px;
   color: var(--text-color);
 }
+.about .map {
+  width: 100%;
+}
 /* End About Us */
 /* Start Contact */
 .contact {
@@ -651,6 +654,9 @@ button {
   flex-direction: column;
   gap: 64px;
   color: var(--text-color);
+}
+.contact .map {
+  width: 100%;
 }
 /* Start Contact */
 /* Start Footer */
