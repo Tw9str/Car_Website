@@ -623,6 +623,36 @@ button {
   text-align: center;
 }
 /* End Customers */
+/* Start About Us */
+.about {
+  padding-top: 93px;
+  background-color: var(--main-color);
+}
+.about .container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 64px;
+  color: var(--text-color);
+}
+/* End About Us */
+/* Start Contact */
+.contact {
+  padding-top: 93px;
+  background-color: var(--main-color);
+}
+.contact .container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 64px;
+  color: var(--text-color);
+}
+/* Start Contact */
 /* Start Footer */
 .footer {
   color: var(--text-color);
